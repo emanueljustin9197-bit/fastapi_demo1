@@ -1,0 +1,94 @@
+在线表格智能问卷系统 V1.0
+运行前必读：配置修改说明
+========================================
+
+一、需要安装的软件
+
+1. Python 3.9 或更高版本
+2. Node.js 18 或更高版本
+3. MySQL 8.0 或更高版本
+
+二、初始化数据库
+
+使用 Navicat、MySQL Workbench 或 MySQL 命令行，执行：
+
+database\schema.sql
+
+该脚本会创建 online_form 数据库和项目所需数据表。
+
+三、安装项目依赖
+
+双击项目根目录中的：
+
+01_安装依赖.bat
+
+安装脚本会自动创建 backend\.env。
+
+四、必须修改的配置
+
+请打开并修改：
+
+backend\.env
+
+注意：后端实际读取的是 .env，不是 .env.example。
+如果只有 .env.example，请先复制一份并重命名为 .env。
+
+参考配置：
+
+ASYNC_DATABASE_URL=mysql+aiomysql://root:你的MySQL密码@127.0.0.1:3306/online_form?charset=utf8mb4
+SECRET_KEY=请填写至少32位的随机字符串
+FRONTEND_BASE_URL=http://localhost:5173
+DEEPSEEK_API_KEY=
+DEEPSEEK_MODEL=deepseek-chat
+DEEPSEEK_BASE_URL=https://api.deepseek.com
+SQLALCHEMY_ECHO=false
+
+需要修改的项目：
+
+1. ASYNC_DATABASE_URL
+   将“你的MySQL密码”替换为本机 MySQL 密码。
+   如果 MySQL 用户名不是 root，也要替换 root。
+   密码包含 @、:、/、# 等字符时，需要先进行 URL 编码。
+
+2. SECRET_KEY
+   必须替换为至少 32 位的随机字符串，不能保留示例占位内容。
+
+3. FRONTEND_BASE_URL
+   只在本机使用时保持 http://localhost:5173。
+   需要手机扫码或局域网访问时，改为电脑局域网地址，例如：
+   http://192.168.1.10:5173
+
+4. DEEPSEEK_API_KEY
+   需要使用 AI 问卷生成和 AI 分析时填写。
+   不填写也能使用登录、问卷编辑、发布、填写、统计、异常检测和导出等功能。
+
+五、启动系统
+
+配置完成后，双击：
+
+02_启动系统.bat
+
+启动后访问：
+
+前端：http://localhost:5173
+后端接口文档：http://localhost:8000/docs
+
+运行期间请不要关闭自动打开的前端和后端命令窗口。
+
+六、常见问题
+
+1. 提示“请配置安全的 SECRET_KEY”
+   原因：没有创建 backend\.env，或 SECRET_KEY 仍是占位内容。
+
+2. 提示数据库连接失败
+   检查 MySQL 是否启动、账号密码是否正确，并确认已执行 database\schema.sql。
+
+3. AI 功能提示未配置
+   在 backend\.env 中填写有效的 DEEPSEEK_API_KEY。
+
+4. 手机无法打开二维码链接
+   不要使用 localhost；将 FRONTEND_BASE_URL 改为电脑局域网 IP，并确保手机和电脑连接同一网络。
+
+七、安全提醒
+
+backend\.env 中包含数据库密码和 API Key，不要发送给无关人员，也不要放进公开仓库或比赛文档截图。

@@ -1,0 +1,14 @@
+backend/.env
+backend/.venv/
+backend/__pycache__/
+backend/**/*.pyc
+backend/survey.db
+backend/uploads/avatars/*
+backend/uploads/backgrounds/*
+!backend/uploads/avatars/.gitkeep
+!backend/uploads/backgrounds/.gitkeep
+frontend/node_modules/
+frontend/dist/
+frontend/tsconfig.app.tsbuildinfo
+.idea/
+*.zip

@@ -1,0 +1,16 @@
+fastapi>=0.110,<1
+uvicorn[standard]>=0.29,<1
+sqlalchemy[asyncio]>=2.0,<3
+aiosqlite>=0.20,<1
+aiomysql>=0.2,<1
+pydantic-settings>=2.0,<3
+python-multipart>=0.0.9,<1
+qrcode[pil]>=7.4,<9
+bcrypt>=4.0,<5
+passlib
+PyJWT
+openpyxl
+langchain>=0.3,<0.4
+langchain-openai>=0.2,<0.4
+langgraph>=0.2,<0.3
+python-dotenv>=1.0,<2
